@@ -1,0 +1,59 @@
+<div class="dashboard-page">
+  <div class="page-header">
+    <h1 class="page-title">Services</h1>
+    <p class="page-description">Each service has a title, a description, and tags (tools) under it.</p>
+  </div>
+
+  @for (serviceForm of serviceForms; track serviceForm; let serviceIndex = $index) {
+    <form [formGroup]="serviceForm" (ngSubmit)="saveService(serviceForm)" class="cms-card" novalidate>
+      <div class="cms-card-header">
+        <h2 class="card-title">Service {{ serviceIndex + 1 }}</h2>
+        <div class="btn-actions">
+          <button type="submit" class="btn btn-save">Save</button>
+          <button type="button" class="btn btn-delete" (click)="removeService(serviceForm)">Delete service</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" formControlName="title" placeholder="Full-Stack Web Development">
+        @if (serviceForm.controls.title.invalid && serviceForm.controls.title.touched) {
+          @if (serviceForm.controls.title.errors?.['required']) {
+            <span class="msg">Service title is required</span>
+          }
+          @if (serviceForm.controls.title.errors?.['maxlength']) {
+            <span class="msg">Service title must be 30 characters or less</span>
+          }
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea rows="3" formControlName="desc" placeholder="Write service description"></textarea>
+        @if (serviceForm.controls.desc.invalid && serviceForm.controls.desc.touched) {
+          @if (serviceForm.controls.desc.errors?.['required']) {
+            <span class="msg">Service description is required</span>
+          }
+          @if (serviceForm.controls.desc.errors?.['maxlength']) {
+            <span class="msg">Service description must be 150 characters or less</span>
+          }
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Tags / Tools</label>
+        <div formArrayName="tags" class="tags-container">
+          @for (tag of getTags(serviceForm).controls; track $index; let tagIndex = $index) {
+            <div class="tag-item">
+              <input type="text" [formControlName]="tagIndex" placeholder="Tag">
+              <button type="button" class="tag-remove" (click)="removeTag(serviceForm, tagIndex)" aria-label="Remove tag">✕</button>
+            </div>
+          }
+          <button type="button" class="btn-tag-add" (click)="addTag(serviceForm)">+ Tag</button>
+        </div>
+      </div>
+    </form>
+  }
+
+  <button type="button" class="btn btn-add-full" style="font-size: 1rem; padding: 1rem;" (click)="addService()">+ Add new service (whole block)</button>
+</div>

@@ -1,0 +1,85 @@
+<section id="services" class="services-section">
+  <div class="services-container">
+    <h2 class="section-title">Services</h2>
+
+    <div class="services-grid">
+      <!-- Service 1: Full-Stack Web Development -->
+       @for (service of services; track $index) {
+      <div class="service-card">
+        <div class="service-icon">
+          @if($index%4 == 0) {
+            <i class="fa-solid fa-code"></i>
+          } @else if($index%4 == 1) {
+            <i class="fa-solid fa-border-all"></i>
+          } @else if($index%4 == 2) {
+            <i class="fa-solid fa-shield-halved"></i>
+          } @else if($index%4 == 3) {
+            <i class="fa-solid fa-sun"></i>
+          }
+        </div>
+        <h3 class="service-title">{{service.title}}</h3>
+        <p class="service-description">
+{{service.desc}}
+        </p>
+        <div class="tech-badges">
+          @for (tag of service.tags; track $index) {
+          <span class="badge">{{tag}}</span>
+          }
+        </div>
+      </div>
+    }
+      <!-- Service 2: Responsive Frontend Development -->
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fa-solid fa-border-all"></i>
+        </div>
+        <h3 class="service-title">Responsive Frontend Development</h3>
+        <p class="service-description">
+          Converting Figma designs into clean, pixel-perfect, and highly interactive user interfaces that perform smoothly across all devices and screen sizes.
+        </p>
+        <div class="tech-badges">
+          <span class="badge">HTML5 / CSS3</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">Tailwind</span>
+          <span class="badge">Bootstrap</span>
+          <span class="badge">Figma</span>
+        </div>
+      </div>
+
+      <!-- Service 3: Web Security & Vulnerability Assessment -->
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="service-title">Web Security & Vulnerability Assessment</h3>
+        <p class="service-description">
+          Auditing web applications against OWASP Top 10 vulnerabilities, configuring SSL/Cloudflare security, and implementing security best practices to protect user data.
+        </p>
+        <div class="tech-badges">
+          <span class="badge">OWASP Top 10</span>
+          <span class="badge">SSL Setup</span>
+          <span class="badge">Network Security</span>
+          <span class="badge">Cloudflare</span>
+          <span class="badge">CyberOps</span>
+        </div>
+      </div>
+
+      <!-- Service 4: Performance & Code Refactoring -->
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fa-solid fa-sun"></i>
+        </div>
+        <h3 class="service-title">Performance & Code Refactoring</h3>
+        <p class="service-description">
+          Optimizing website loading speeds, writing clean maintainable architecture, and refactoring existing codebases for better user experience and SEO.
+        </p>
+        <div class="tech-badges">
+          <span class="badge full-width">Performance Optimization</span>
+          <span class="badge">Git / GitHub</span>
+          <span class="badge">Clean Code</span>
+          <span class="badge">Debugging</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

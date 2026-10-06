@@ -1,0 +1,89 @@
+:host {
+  display: block;
+  width: 100%;
+  background-color: #0d0d0d;
+}
+
+.skills-section {
+  width: 100%;
+  padding: 90px 0;
+  background-color: #0d0d0d;
+}
+
+.skills-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* العنوان الرئيسي */
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #76eb00;
+  text-align: center;
+  margin: 0 0 60px;
+}
+
+/* شبكة الكروت 2x2 */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 80px;
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* عنوان القسم */
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #76eb00;
+  margin: 0 0 15px;
+}
+
+/* قائمة المهارات */
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-list li {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.8;
+  position: relative;
+  padding-left: 20px;
+}
+
+/* شكل النقطة البيضاء (Bullet Point) */
+.skill-list li::before {
+  content: "•";
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .skills-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+}

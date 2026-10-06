@@ -1,0 +1,99 @@
+:host {
+  display: block;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #0d0d0d;
+}
+
+.navbar {
+  width: 100%;
+  padding: 25px 0;
+  background-color: #0d0d0d;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* روابط التنقل */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #76eb00; /* اللون الأخضر الأساسي للتصميم */
+}
+
+/* أزرار الهيدر */
+.nav-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* زر Portfolio الأخضر */
+.btn-primary {
+  background-color: #76eb00;
+  color: #000000;
+  border: 1px solid #76eb00;
+}
+
+.btn-primary:hover {
+  background-color: #65ca00;
+  border-color: #65ca00;
+}
+
+/* زر Dashboard المحدد بالخط */
+.btn-outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #76eb00;
+}
+
+.btn-outline:hover {
+  background-color: #76eb00;
+  color: #000000;
+}
+
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-links {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,19 @@
+<section id="skills" class="skills-section">
+  <div class="skills-container">
+    <h2 class="section-title">{{title}}</h2>
+
+    <div class="skills-grid">
+      @for(skill of skills;track $index){
+      <div class="skill-card">
+          
+          <h3 class="card-title">{{$index + 1}}. {{skill.title}}</h3>
+          <ul class="skill-list">
+            @for(item of skill.items;track $index){
+              <li>{{item}}</li>
+            }
+          </ul>
+        </div>
+      }
+      </div>
+  </div>
+</section>

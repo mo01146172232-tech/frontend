@@ -1,0 +1,64 @@
+<div class="dashboard-page">
+  <div class="page-header">
+    <h1 class="page-title">Navbar</h1>
+    <p class="page-description">Edit the labels shown in your portfolio's top navigation menu. Add as many links as you need.</p>
+  </div>
+
+  <form [formGroup]="navForm" (ngSubmit)="onSubmit()">
+    <div class="cms-card">
+      <div class="cms-card-header">
+        <h2 class="card-title">Top navigation menu</h2>
+        <button type="submit" class="btn btn-save">Save</button>
+      </div>
+
+      <div class="form-group" formArrayName="items">
+        @for (control of items.controls; track $index; let i = $index) {
+          <div class="row">
+            <input type="text" [formControlName]="i" placeholder="Link Label (e.g. Hero)">
+            @if (control.invalid && control.touched) {
+              @if (control.errors?.['required']) {
+                <span class="msg">Link label is required</span>
+              }
+              @if (control.errors?.['maxlength']) {
+                <span class="msg">Link label must be 30 characters or less</span>
+              }
+            }
+          </div>
+        }
+        @if (items.invalid && items.touched) {
+          <span class="msg">At least one link is required</span>
+        }
+        <button type="button" class="btn btn-delete" (click)="deleteItem()">Delete</button>
+      </div>
+
+      <button type="button" class="btn btn-add-full" (click)="addItem()">+ Add link</button>
+
+      <div class="row2">
+        <div>
+          <label>Primary button text</label>
+          <input type="text" formControlName="primaryBtn" placeholder="e.g. View My Work">
+          @if (navForm.get('primaryBtn')?.invalid && navForm.get('primaryBtn')?.touched) {
+            @if (navForm.get('primaryBtn')?.errors?.['minlength']) {
+              <span class="msg">Primary button text must be at least 3 characters</span>
+            }
+            @if (navForm.get('primaryBtn')?.errors?.['maxlength']) {
+              <span class="msg">Primary button text must be 20 characters or less</span>
+            }
+          }
+        </div>
+        <div>
+          <label>Secondary button text</label>
+          <input type="text" formControlName="secondaryBtn" placeholder="e.g. Contact Me">
+          @if (navForm.get('secondaryBtn')?.invalid && navForm.get('secondaryBtn')?.touched) {
+            @if (navForm.get('secondaryBtn')?.errors?.['minlength']) {
+              <span class="msg">Secondary button text must be at least 3 characters</span>
+            }
+            @if (navForm.get('secondaryBtn')?.errors?.['maxlength']) {
+              <span class="msg">Secondary button text must be 20 characters or less</span>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,76 @@
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <h2 class="section-title">{{title}}</h2>
+
+    <div class="contact-wrapper">
+      <!-- الجزء الأيسر: معلومات التواصل -->
+      <div class="contact-info-card">
+        <h3 class="info-header">{{contactText?.smallLabel}}</h3>
+        <p class="info-subheader">{{contactText?.subHeading}}</p>
+
+        <p class="info-description">
+          {{contactText?.introText}}
+        </p>
+
+        <div class="contact-details">
+          <div class="detail-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>{{contactText?.email}}</span>
+          </div>
+          <div class="detail-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>{{contactText?.location}}</span>
+          </div>
+        </div>
+
+        <!-- أيقونات التواصل الاجتماعي -->
+        <div class="social-icons">
+          @for (social of contactText?.socialLinks; track $index) {
+            <a [href]="social.url" target="_blank" [attr.aria-label]="social.platform">
+
+                <i [class]="'fa-brands fa-' + social.platform"></i>
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- الجزء الأيمن: نموذج المراسلة (Form) -->
+      <div class="contact-form-card">
+        <form class="contact-form" #myForm="ngForm" (ngSubmit)="postUser(myForm)">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="enter your name" required ngModel name="name" #name="ngModel"/>
+            @if(name?.invalid && name?.touched){
+                <span class="msg">Name is required</span>
+              }
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="enter your email" required ngModel name="email" #email="ngModel" pattern="[a-zA-Z0-9._%\+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"/>
+            @if (email?.invalid && email?.touched) {
+                @if (email.errors?.['required']) {
+                <span class="msg">Email is required</span>
+                }
+                @if (email.errors?.['pattern']) {
+                <span class="msg">Email format is wrong</span>
+                }
+                }
+          </div>
+
+          <div class="form-group">
+            <label for="message">message</label>
+            <textarea id="message" rows="4" placeholder="enter your message" required ngModel name="message" #message="ngModel"></textarea>
+            @if(message?.invalid && message?.touched){
+                <span class="msg">Message is required</span>
+              }
+          </div>
+          @if(myForm?.invalid && myForm?.touched){
+          <span class="msg">{{msg}}</span>
+          }
+          <button type="submit" class="btn-submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

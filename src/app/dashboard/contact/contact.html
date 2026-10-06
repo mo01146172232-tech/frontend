@@ -1,0 +1,80 @@
+<div class="dashboard-page">
+  <div class="page-header">
+    <h1 class="page-title">Contact</h1>
+    <p class="page-description">Edit the main heading, email, location, social links, and the "Get in Touch" text.</p>
+  </div>
+
+  <form [formGroup]="contactForm" (ngSubmit)="saveContact()" novalidate>
+    <div class="cms-card">
+      <div class="cms-card-header">
+        <h2 class="card-title">Contact info</h2>
+        <div class="btn-actions">
+          <button type="submit" class="btn btn-save">Save</button>
+        </div>
+      </div>
+
+
+
+      <div class="form-group row">
+        <div>
+          <label>Small label</label>
+          <input type="text" formControlName="smallLabel" placeholder="GET IN TOUCH">
+        </div>
+        <div>
+          <label>Sub-heading</label>
+          <input type="text" formControlName="subHeading" placeholder="Let's Build Something Great!">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Intro text</label>
+        <textarea rows="3" formControlName="introText" placeholder="Write intro text"></textarea>
+      </div>
+
+      <div class="form-group row">
+        <div>
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="example@email.com">
+        </div>
+        <div>
+          <label>Location</label>
+          <input type="text" formControlName="location" placeholder="Giza, Egypt">
+        </div>
+      </div>
+    </div>
+
+    <div class="cms-card">
+      <div class="cms-card-header">
+        <h2 class="card-title">Social links</h2>
+        <div class="btn-actions">
+          <button type="button" class="btn btn-save" (click)="addSocialLink()">+ Add social link</button>
+          <button type="submit" class="btn btn-save">Save links</button>
+        </div>
+      </div>
+
+      <div formArrayName="socialLinks">
+        @for (link of socialLinks.controls; track $index; let i = $index) {
+          <div class="form-group row" [formGroupName]="i">
+            <label style="width: 100px;">{{ i === 0 ? 'LinkedIn' : i === 1 ? 'GitHub' : 'Social' }}</label>
+            <select formControlName="platform">
+              <option value="linkedin">Linkedin</option>
+              <option value="github">github</option>
+              <option value="twitter">Twitter</option>
+              <option value="facebook">Facebook</option>
+              <option value="instagram">Instagram</option>
+              <option value="whatsapp">Whatsapp</option>
+            </select>
+            @if (link.get('platform')?.invalid && link.get('platform')?.touched && link.get('platform')?.errors?.['required']) {
+              <span class="msg">Social platform is required</span>
+            }
+            <input type="url" formControlName="url" placeholder="https://...">
+            @if (link.get('url')?.invalid && link.get('url')?.touched && link.get('url')?.errors?.['required']) {
+              <span class="msg">Social link URL is required</span>
+            }
+            <button type="button" class="btn btn-delete" (click)="removeSocialLink(i)">✕</button>
+          </div>
+        }
+      </div>
+    </div>
+  </form>
+</div>

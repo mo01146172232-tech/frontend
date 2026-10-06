@@ -1,0 +1,174 @@
+:host {
+  display: block;
+  width: 100%;
+  background-color: #0d0d0d;
+}
+
+.projects-section {
+  width: 100%;
+  padding: 90px 0;
+  background-color: #0d0d0d;
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* العنوان الرئيسي */
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #76eb00;
+  text-align: center;
+  margin: 0 0 50px;
+}
+
+/* تعرض مجموعة المشاريع الحالية فقط */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* تنسيق كارت المشروع */
+.project-card {
+  background-color: #161616;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* المكان المخصص لصورة المشروع */
+.project-img-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: #1a1a1a;
+  overflow: hidden;
+  position: relative;
+}
+
+/* تنسيق الصورة نفسها */
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* تأثير التكبير عند تمرير الماوس */
+.project-card:hover .project-img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+/* معلومات الكارت */
+.project-info {
+  padding: 20px;
+  text-align: center;
+  background-color: #1a1a1a;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-name {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 15px;
+}
+
+/* زر Live Demo */
+.btn-demo {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #76eb00;
+  color: #000000;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.btn-demo:hover {
+  background-color: #65ca00;
+  box-shadow: 0 0 12px rgba(118, 235, 0, 0.4);
+}
+
+/* التحكم والأسهم */
+.projects-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.nav-arrows {
+  display: flex;
+  gap: 20px;
+}
+
+.arrow-btn {
+  background: transparent;
+  border: none;
+  color: #76eb00;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.arrow-btn:hover {
+  color: #ffffff;
+  transform: scale(1.15);
+}
+
+.arrow-btn:disabled {
+  color: #555555;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* نقاط التنقل Pagination */
+.pagination-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: #333333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #76eb00;
+}
+
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,235 @@
+.dashboard-page {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #f3f4f6;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: #ffffff;
+}
+
+.page-description {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.cms-card {
+  background-color: #181c25;
+  border: 1px solid #262c3a;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1.5rem;
+}
+
+.cms-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #262c3a;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.btn-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+.btn-save {
+  background-color: #22c55e;
+  color: #000;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save:hover {
+  background-color: #16a34a;
+}
+
+.btn-delete {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Validation Styles */
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid #ef4444;
+}
+
+.msg {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+  display: block;
+}
+
+/* Table Design for Dark Theme */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.messages-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.messages-table th,
+.messages-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #262c3a;
+}
+
+.messages-table th {
+  background-color: #0f1218;
+  color: #9ca3af;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.messages-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.messages-table tbody tr:hover {
+  background-color: #202634;
+}
+
+.messages-table tbody tr.unread {
+  background-color: rgba(34, 197, 94, 0.05);
+}
+
+.messages-table tbody tr.selected {
+  background-color: #283042;
+  border-left: 3px solid #22c55e;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #262c3a;
+  color: #9ca3af;
+  display: inline-block;
+}
+
+.status-badge.status-unread {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+/* Action Icons inside Table */
+.action-cells {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  padding: 0.4rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-icon:hover {
+  color: #22c55e;
+}
+
+.btn-delete-icon:hover {
+  color: #ef4444;
+}
+
+.no-data {
+  text-align: center;
+  color: #6b7280;
+  padding: 2rem !important;
+}
+
+/* Message Meta & View Box */
+.message-meta-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #0f1218;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #2d3545;
+  font-size: 0.9rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.meta-item label {
+  margin-bottom: 0;
+  width: 80px;
+  color: #6b7280;
+}
+
+.meta-item span {
+  color: #f3f4f6;
+}
+
+.message-body-box {
+  background-color: #0f1218;
+  border: 1px solid #2d3545;
+  border-radius: 6px;
+  padding: 1rem;
+  min-height: 120px;
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  color: #f3f4f6;
+  line-height: 1.6;
+}

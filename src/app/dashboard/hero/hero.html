@@ -1,0 +1,129 @@
+<div class="dashboard-page">
+  <div class="page-header">
+    <h1 class="page-title">Hero</h1>
+    <p class="page-description">Edit the name, role, description, and buttons in the hero section (top of the page).</p>
+  </div>
+
+  <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+    <div class="cms-card">
+      <div class="cms-card-header">
+        <h2 class="card-title">Hero section</h2>
+        <div class="btn-actions">
+          <button type="submit" class="btn btn-save">Save</button>
+          <button type="button" class="btn btn-delete" (click)="delete()">Delete section</button>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <!-- Greeting -->
+        <div>
+          <label>Greeting</label>
+          <input type="text" formControlName="welcome">
+          @if (heroForm.get('welcome')?.invalid && heroForm.get('welcome')?.touched) {
+            @if (heroForm.get('welcome')?.errors?.['maxlength']) {
+              <span class="msg">Welcome length should be 20 chars or less</span>
+            }
+          }
+        </div>
+
+        <!-- Name -->
+        <div>
+          <label>Name</label>
+          <input type="text" formControlName="name">
+          @if (heroForm.get('name')?.invalid && heroForm.get('name')?.touched) {
+            @if (heroForm.get('name')?.errors?.['required']) {
+              <span class="msg">Name is required</span>
+            }
+            @if (heroForm.get('name')?.errors?.['minlength']) {
+              <span class="msg">Name length should be 3 or more chars</span>
+            }
+            @if (heroForm.get('name')?.errors?.['maxlength']) {
+              <span class="msg">Name length should be 30 chars or less</span>
+            }
+          }
+        </div>
+      </div>
+
+      <!-- Role / Job Title -->
+      <div class="form-group">
+        <label>Role / Job title</label>
+        <input type="text" formControlName="jobTitle">
+        @if (heroForm.get('jobTitle')?.invalid && heroForm.get('jobTitle')?.touched) {
+          @if (heroForm.get('jobTitle')?.errors?.['required']) {
+            <span class="msg">Job title is required</span>
+          }
+          @if (heroForm.get('jobTitle')?.errors?.['minlength']) {
+            <span class="msg">Job title length should be 5 or more chars</span>
+          }
+          @if (heroForm.get('jobTitle')?.errors?.['maxlength']) {
+            <span class="msg">Job title length should be 30 chars or less</span>
+          }
+        }
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label>Description under the name</label>
+        <textarea rows="3" formControlName="desc"></textarea>
+        @if (heroForm.get('desc')?.invalid && heroForm.get('desc')?.touched) {
+          @if (heroForm.get('desc')?.errors?.['minlength']) {
+            <span class="msg">Description length should be 10 or more chars</span>
+          }
+          @if (heroForm.get('desc')?.errors?.['maxlength']) {
+            <span class="msg">Description length should be 100 chars or less</span>
+          }
+        }
+      </div>
+
+      <div class="form-group row">
+        <!-- Primary Button -->
+        <div>
+          <label>Primary button text</label>
+          <input type="text" formControlName="primaryBtn">
+          @if (heroForm.get('primaryBtn')?.invalid && heroForm.get('primaryBtn')?.touched) {
+            @if (heroForm.get('primaryBtn')?.errors?.['minlength']) {
+              <span class="msg">Primary button length should be 3 or more chars</span>
+            }
+            @if (heroForm.get('primaryBtn')?.errors?.['maxlength']) {
+              <span class="msg">Primary button length should be 20 chars or less</span>
+            }
+          }
+        </div>
+
+        <!-- Secondary Button -->
+        <div>
+          <label>Secondary button text</label>
+          <input type="text" formControlName="secondaryBtn">
+          @if (heroForm.get('secondaryBtn')?.invalid && heroForm.get('secondaryBtn')?.touched) {
+            @if (heroForm.get('secondaryBtn')?.errors?.['minlength']) {
+              <span class="msg">Secondary button length should be 3 or more chars</span>
+            }
+            @if (heroForm.get('secondaryBtn')?.errors?.['maxlength']) {
+              <span class="msg">Secondary button length should be 20 chars or less</span>
+            }
+          }
+        </div>
+      </div>
+
+      <!-- Image Display -->
+      @if (hero?.imgURL) {
+        <div class="current-img-container" style="margin-bottom: 10px;">
+          <p style="font-size: 13px; color: #666; margin-bottom: 4px;">image :</p>
+          <img [src]="IMGURL" alt="Profile photo" style="max-width: 150px; border-radius: 8px; border: 1px solid #ccc;">
+        </div>
+      }
+
+      <!-- Profile Photo Input -->
+      <div class="form-group">
+        <label>Profile photo</label>
+        <input type="file" (change)="onFileChange($event)">
+        @if (heroForm.get('img')?.invalid && heroForm.get('img')?.touched) {
+          @if (heroForm.get('img')?.errors?.['required']) {
+            <span class="msg">Profile photo is required</span>
+          }
+        }
+      </div>
+
+    </div>
+  </form>
+</div>

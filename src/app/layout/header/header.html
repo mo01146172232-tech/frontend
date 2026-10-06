@@ -1,0 +1,16 @@
+<header class="navbar">
+  <div class="nav-container">
+    <!-- قائمة التنقل رئيسية -->
+    <nav class="nav-links">
+      @for(item of header?.dataNavbar;track $index){
+      <a [routerLink]="item.toLowerCase()" class="nav-link" routerLinkActive="active">{{item}}</a>}
+
+    </nav>
+
+    <!-- أزرار العمليات والتحويل -->
+    <div class="nav-actions">
+      <a routerLink="" routerLinkActive="btn-primary" class="btn ">{{header?.primaryBtn}}</a>
+      <a routerLink="dashboard" routerLinkActive="btn-primary" class="btn btn-outline">{{header?.secondaryBtn}}</a>
+    </div>
+  </div>
+</header>

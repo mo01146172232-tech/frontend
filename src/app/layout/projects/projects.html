@@ -1,0 +1,46 @@
+<section id="projects" class="projects-section">
+  <div class="projects-container">
+    <h2 class="section-title">{{title}}</h2>
+
+    <!-- كروت المشاريع -->
+    <div class="projects-grid">
+      @for (project of visibleProjects; track project._id) {
+        <div class="project-card">
+          <div class="project-img-placeholder">
+            <img [src]="staticURL + project.imgURL" [alt]="project.name" class="project-img" />
+          </div>
+          <div class="project-info">
+            <p class="project-name">{{ project.name }}</p>
+            <a [href]="project.link" class="btn btn-demo" target="_blank">Live Demo</a>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- أسهم التنقل والـ Pagination -->
+    @if (pageCount > 1) {
+    <div class="projects-navigation">
+      <div class="nav-arrows">
+        <button class="arrow-btn" aria-label="Previous projects" [disabled]="currentPage === 0" (click)="previousPage()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button class="arrow-btn" aria-label="Next projects" [disabled]="currentPage === pageCount - 1" (click)="nextPage()">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="pagination-dots">
+        @for (page of pages; track page) {
+          <button
+            class="dot"
+            [class.active]="page === currentPage"
+            [attr.aria-label]="'Go to project page ' + (page + 1)"
+            [attr.aria-current]="page === currentPage ? 'page' : null"
+            (click)="goToPage(page)">
+          </button>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</section>

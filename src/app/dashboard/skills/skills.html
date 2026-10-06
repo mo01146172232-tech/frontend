@@ -1,0 +1,49 @@
+
+<div class="dashboard-page">
+  <div class="page-header">
+    <h1 class="page-title">Skills</h1>
+    <p class="page-description">Each skill block is a skill category, with individual skills listed under it. Add a whole new category, or a single skill inside a category.</p>
+  </div>
+
+  @for (categoryForm of categoryForms; track categoryForm; let categoryIndex = $index) {
+    <form [formGroup]="categoryForm" (ngSubmit)="saveCategory(categoryForm)" class="cms-card">
+      <div class="cms-card-header">
+        <h2 class="card-title">Category {{ categoryIndex + 1 }}</h2>
+        <div class="btn-actions">
+          <button type="submit" class="btn btn-save">Save</button>
+          <button type="button" class="btn btn-delete" (click)="removeCategory(categoryForm)">Delete category</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Category title</label>
+        <input type="text" formControlName="title" placeholder="1. Frontend Development">
+        @if (categoryForm.controls.title.invalid && categoryForm.controls.title.touched) {
+          @if (categoryForm.controls.title.errors?.['required']) {
+            <span class="msg">Category title is required</span>
+          }
+          @if (categoryForm.controls.title.errors?.['maxlength']) {
+            <span class="msg">Category title must be 30 characters or less</span>
+          }
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Skills in this category</label>
+
+        <div formArrayName="items">
+          @for (skill of getItems(categoryForm).controls; track $index; let skillIndex = $index) {
+            <div class="form-group row">
+              <input type="text" [formControlName]="skillIndex" [placeholder]="'Skill ' + (skillIndex + 1)">
+              <button type="button" class="btn btn-delete" (click)="removeSkill(categoryForm, skillIndex)">✕</button>
+            </div>
+          }
+        </div>
+
+        <button type="button" class="btn btn-add-full" (click)="addSkill(categoryForm)">+ Add skill</button>
+      </div>
+    </form>
+  }
+
+  <button type="button" class="btn btn-add-full" style="font-size: 1rem; padding: 1rem;" (click)="addCategory()">+ Add new skill category (whole block)</button>
+</div>

@@ -1,0 +1,36 @@
+<div class="dashboard-page">
+  <div class="page-header">
+    <h1 class="page-title">{{title}}</h1>
+    <p class="page-description">Edit the "{{title}} Me" section text.</p>
+  </div>
+
+  <form [formGroup]="aboutForm" (ngSubmit)="onSubmit()">
+    <div class="cms-card">
+      <div class="cms-card-header">
+        <h2 class="card-title" >About section</h2>
+        <div class="btn-actions">
+          <button type="submit" [disabled]="aboutForm.invalid" class="btn btn-save">Save</button>
+          <button type="button" class="btn btn-delete" (click)="delete()">Delete section</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>About text *</label>
+        <textarea rows="6" formControlName="text"></textarea>
+
+        <!-- Validation Messages -->
+        @if (aboutForm.get('text')?.invalid && aboutForm.get('text')?.touched) {
+          @if (aboutForm.get('text')?.errors?.['required']) {
+            <span class="msg">About text is required</span>
+          }
+          @if (aboutForm.get('text')?.errors?.['minlength']) {
+            <span class="msg">Text length should be 10 or more chars</span>
+          }
+          @if (aboutForm.get('text')?.errors?.['maxlength']) {
+            <span class="msg">Text length should be 500 chars or less</span>
+          }
+        }
+      </div>
+    </div>
+  </form>
+</div>

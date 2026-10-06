@@ -1,0 +1,37 @@
+<div class="dashboard-page">
+  <div class="page-header">
+    <h1 class="page-title">Messages</h1>
+    <p class="page-description">Manage and view contact messages received from visitors.</p>
+  </div>
+
+  <div class="cms-card">
+    <div class="cms-card-header">
+      <h2 class="card-title">Inbox Messages</h2>
+    </div>
+
+    <div class="table-responsive">
+      <table class="messages-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (msg of messages; track $index) {
+            <tr>
+              <td style="font-weight: 600; color: #ffffff;">{{ msg.name }}</td>
+              <td style="color: #9ca3af;">{{ msg.email }}</td>
+              <td style="color: #d1d5db;">{{ msg.message }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="3" class="no-data">No messages found.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
