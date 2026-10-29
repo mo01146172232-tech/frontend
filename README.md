@@ -1,59 +1,32 @@
-# Front
+# Dynamic Portfolio & Admin Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+## Headline
+A robust, component-based Personal Portfolio and Content Management Dashboard built with Angular to dynamically showcase projects and manage client interactions.
 
-## Development server
+## Executive Summary
+This project serves as a complete frontend solution for a professional developer's portfolio. Instead of a static website, it features a dual-interface architecture: a public-facing layout for clients to view services, projects, and skills, alongside a secure admin dashboard to manage content and review incoming contact messages dynamically.
 
-To start a local development server, run:
+## Project Plan
+1. **Architecture Design:** Structuring the Angular application into distinct modules (`core`, `layout` for the public site, and `dashboard` for admin features).
+2. **Data Modeling & Services:** Creating TypeScript interfaces (Models) and Angular Services for handling About, Contact, Hero, Projects, and Skills data.
+3. **UI/UX Development:** Building responsive, modular HTML/CSS components for both the storefront and the admin backend.
+4. **Routing & Navigation:** Implementing Angular Router for seamless Single Page Application (SPA) transitions between public views and admin panels.
 
-```bash
-ng serve
-```
+## Challenge / Problem
+Traditional portfolios are often hardcoded, meaning developers must manually edit HTML/CSS files every time they want to add a new project, update a skill, or change a service offering. Additionally, tracking client inquiries usually relies on messy email integrations rather than a centralized system.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Objectives
+- Build a dynamic, data-driven web application that strictly separates content from presentation.
+- Create an intuitive admin dashboard allowing full CRUD (Create, Read, Update, Delete) capabilities for portfolio data.
+- Ensure the public-facing interface is fast, responsive, and highly interactive.
+- Centralize client communications through an integrated messaging dashboard.
 
-## Code scaffolding
+## Solution
+- Developed a scalable Angular SPA with a clear separation of concerns using Services and Dependency Injection.
+- Built a secure `dashboard` module where the owner can manage `projects`, `services`, `skills`, and read `messages` submitted through the public contact form.
+- Leveraged Angular's reactive data binding to ensure that any content updated in the dashboard is instantly reflected on the public `layout`.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Lessons Learned
+- Implementing a modular architecture in Angular drastically improves code maintainability and team scalability.
+- Centralizing API calls and state management within the `core/services` folder simplifies data sharing across completely different modules (Dashboard vs. Layout).
+- Building reusable UI components accelerates the development process for both client-facing and internal admin interfaces.
